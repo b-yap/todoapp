@@ -48,10 +48,22 @@ componentDidMount(){
     e.preventDefault();
   }
 
+
+  handleDelete(id) {
+    console.log(id);
+    axios.delete("https://testreacttodoapp.herokuapp.com/todos/"+id)
+    .then(response => response.data)
+    .then (deletedTodo => {
+      todo: this.state.todos.filter(todod => todod.id !== id)
+
+    });
+
+  }
+
   render() {
     return (
       <div>
-        <h2>Todo list2</h2>
+        <h2>Todo list</h2>
         <form onSubmit={this.handleSubmit}>
           <input type="text" placeholder="What needs to be done?" />
         </form>
@@ -62,7 +74,7 @@ componentDidMount(){
             <ul>
             {this.state.todos.map(todo => (
             <li key={todo.id}>{todo.title} 
-              <button>x</button>
+              <button onClick={this.handleDelete(todo.id)}>x</button>
             </li>
           ))}
 
