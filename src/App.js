@@ -63,7 +63,7 @@ componentDidMount(){
   render() {
     return (
       <div>
-        <h2>Todo list</h2>
+        <h2>Todo list 3</h2>
         <form onSubmit={this.handleSubmit}>
           <input type="text" placeholder="What needs to be done?" />
         </form>
